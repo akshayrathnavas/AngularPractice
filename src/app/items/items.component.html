@@ -1,0 +1,14 @@
+<h1>ITEM LIST</h1>
+
+<table>
+<tr *ngFor="let item of items">
+  <td [style.background-color]=item.color>{{item.task}}</td>
+  <td><button style="font-size:24px" (click)="doneTask()"> <i class="fa fa-check"></i></button></td>
+</tr>
+<tr>
+  <td>Task<input type="text"   [(ngModel)]="task1"></td>
+  <td>Color <input type="text" [(ngModel)]="color1"></td>
+  <td>------ADD------</td>
+  <td><button style="font-size:24px" (click)="addTask()"> <i class="fa fa-plus-square"></i></button></td>
+</tr>
+</table>
