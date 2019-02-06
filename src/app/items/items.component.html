@@ -1,14 +1,42 @@
 <h1>ITEM LIST</h1>
 
-<table>
-<tr *ngFor="let item of items">
-  <td [style.background-color]=item.color>{{item.task}}</td>
-  <td><button style="font-size:24px" (click)="doneTask()"> <i class="fa fa-check"></i></button></td>
+<table class="table">
+    <tr>
+        <th scope="col">SL No.</th>
+        <th scope="col">Task</th>
+        <th scope="col">Color</th>
+        <th scope="col">Status</th>
+    </tr>
+<tr *ngFor="let item of items; index as i">
+    <td #index>{{i+1}}</td>
+    <td [style.background-color]=item.color>{{item.task}}</td>
+    <td>{{item.color}}</td>
+    <td><button style="font-size:24px" value={{i}} #button1 (click)="doneTask(button1.value)"> <i class="fa fa-check"></i></button></td>
 </tr>
 <tr>
-  <td>Task<input type="text"   [(ngModel)]="task1"></td>
-  <td>Color <input type="text" [(ngModel)]="color1"></td>
-  <td>------ADD------</td>
-  <td><button style="font-size:24px" (click)="addTask()"> <i class="fa fa-plus-square"></i></button></td>
+  <td>##</td>
+  <td><input type="text"   [(ngModel)]="task1" (keydown)="enterEvent($event)"></td>
+  <td> <input type="text" [(ngModel)]="color1" (keydown)="enterEvent($event)"></td>
+   <td><button style="font-size:24px"  (click)="addTask()"> <i class="fa fa-plus-square"></i></button></td>
+</tr>
+</table>
+
+
+
+
+<h1>TASKS COMPLETED</h1>
+
+<table class="table">
+    <tr>
+        <th scope="col">SL No.</th>
+        <th scope="col">Task</th>
+        <th scope="col">Color</th>
+        <th scope="col">Status</th>
+      </tr>
+<tr *ngFor="let item of completedItems; index as i">
+    <td>{{i+1}}</td>
+    <td [style.background-color]=item.color>{{item.task}}</td>
+    <td>{{item.color}}</td>
+    <td>DONE</td>
 </tr>
 </table>
